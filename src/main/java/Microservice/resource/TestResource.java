@@ -11,7 +11,7 @@ public class TestResource extends BaseResource {
 
     @GET
     public Response getTest() {
-        String test = "Rest working :D";
+        String test = "Microservice is working :D";
         return Response.ok(test).build();
     }
 }
