@@ -14,6 +14,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -24,11 +25,11 @@ import java.util.logging.Logger;
 public class UserResource {
 
     @GET
-    @Consumes
-    @Produces
-    public Response getUserById(UserDTO userDTO) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUser(UserDTO userDTO) {
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
-        GenericUrl url = new GenericUrl("http://local:8081/user");
+        GenericUrl url = new GenericUrl("http://local:8080/user");
 
         try {
             JsonHttpContent content = new JsonHttpContent(GsonFactory.getDefaultInstance(), userDTO);
@@ -37,7 +38,6 @@ public class UserResource {
             if(!response.isSuccessStatusCode()) {
                 return Response.status(Response.Status.BAD_REQUEST).build();
             }
-
         }
         catch(IOException e) {
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, e.getMessage());
