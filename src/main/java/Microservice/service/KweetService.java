@@ -22,4 +22,14 @@ public class KweetService extends BaseService<Kweet, IKweetDao> implements IKwee
     public Collection<Kweet> searchKweet(String searchContent) {
         return kweetDao.searchKweet(searchContent);
     }
+
+    @Override
+    public Collection<Kweet> getTimeline(int userId) {
+        return kweetDao.getTimeline(userId);
+    }
+
+    @Override
+    public Collection<Kweet> getLatestKweets(int userId) {
+        return kweetDao.getLatestKweets(userId);
+    }
 }

@@ -30,4 +30,15 @@ public class KweetDao extends BaseDao<Kweet> implements IKweetDao {
         }
         return kweets;
     }
+
+    @Override
+    public Collection<Kweet> getTimeline(int userId) {
+        return null;
+    }
+
+    @Override
+    public Collection<Kweet> getLatestKweets(int userId) {
+        return null;
+    }
+
 }
